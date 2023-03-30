@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Manage Appointments{% endblock title %}
+
+
+
+{% if request.user.is_staff %}
+
+{% block manageapp %}
+<div class="container mt-5">
+
+    {% if messages %}
+    <div class="card notification-card notification-invitation">
+        <div class="card-body">
+            {% for message in messages %}
+            <div class="card-title">{{message}}</div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-11 text-center mt-4">
+        <h3>
+            Manage appointments
+        </h3>
+    </div>
+    <hr>
+    <div class="row d-flex">
+
+        {% for app in appointments %}
+        <div class="col-lg-4 mt-5">
+            <div class="card card-margin">
+                <div class="card-header border-0 bg-transparent">
+                    <h5 class="card-title">{{app.name}}</h5>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper d-flex">
+                            <div class="widget-49-date-primary mt-3 ">
+                                <span class="widget-49-date-day border rounded-circle bg-info h4 text-primary d-grid"
+                                    style="padding: 10px; --bs-bg-opacity: .1; width: 60px;">{{app.date | date:'d'}}
+                                    {{app.date | date:'M'|upper}}</span>
+                                {% comment %} <span class="widget-49-date-month font-bold">{{app.date |
+                                    date:'M'}}</span> {% endcomment %}
+                            </div>
+                            <div class="widget-49-meeting-info mt-3" style="margin-left:10px;">
+                                <span class="widget-49-pro-title fst-italic">{{app.email}}</span> <br>
+                                <span class="widget-49-meeting-time">{{app.number}}</span>
+                            </div>
+                        </div>
+                        <div class="widget-49-meeting-points">
+                            <span>{{app.content}}</span>
+                        </div>
+                        <hr class="w-100">
+                        {% if app.accepted == False %}
+                        <form action="{% url 'manageapp' %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="date" name="date" class="form-control mb-2" placeholder="dd-mm-yyyy"
+                                    value="" min="1997-01-01" max="2030-12-31">
+                                    <input  hidden="true" name="appointment-id" value="{{app.id}}">
+                                <input class="btn-block btn-primary form-control" style="background-color: #f57f17;"
+                                    type="submit" value="Accept">
+                            </div>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% comment %} margin-left: 470px; justify-content-center align-items-center {% endcomment %}
+
+    {% if is_paginated %}
+    <div class="wrapper text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination mt-3 d-flex justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item "><a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a>
+                </li>
+                {% endif %}
+
+                {% for number in page_obj.paginator.page_range %}
+                <li class="page-item "><a class="page-link " href="?page={{number}}">{{number}}</a></li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item"><a href="?page={{page_obj.next_page_number}}" class="page-link ">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
+</div>
+{% endblock manageapp %}
+
+{% endif %}

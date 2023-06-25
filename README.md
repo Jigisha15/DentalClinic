@@ -1,4 +1,4 @@
-This is a 'Dental Clinic MAnagement System' made using Boostrap for frontend and Django a Python framework for backend. The database that is used is the in-built database that Django provides ie 'dbsqlite'
+This is a 'Dental Clinic Management System' made using Boostrap for frontend and Django a Python framework for backend. The database that is used is the in-built database that Django provides ie 'dbsqlite'
 The Project file structure is very self-explanatory if you are already introduced to Django. Also, it contains only one app, the name of my app is 'dentApp'.
 The dentApp folder has the views.py files which contains the major backend logic behind the project. The urls of my project are located in the dentApp/urls.py file. The forms.py contains the data management in forms.
 The Project folder is in-built default.

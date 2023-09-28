@@ -79,7 +79,7 @@ class ManageAppointmentTemplateView(ListView):
         email = EmailMessage(
             "About your appointment in Trutle\'s Clinic",
             message,
-            'codewhiz69@gmail.com',
+            'jigishamanohar18@gmail.com',
             [appointment.email],
         )
         email.content_subtype = 'html'
@@ -118,7 +118,7 @@ def contact(request):
                 'Hello from Turtle\'s Clinic. This is an automated email, do not reply.',
                 'This is contact form.',
                 'noreply@codewithstein.com',
-                ['cmpn2025@gmail.com'],
+                ['jigishamanohar18@gmail.com'],
                 html_message = html
                 # fail_silently=False
             )

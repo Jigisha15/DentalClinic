@@ -131,23 +131,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-# from sending emails 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# this is for mailtrap
-# EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-# EMAIL_HOST_USER = '33cd514203b498'
-# EMAIL_HOST_PASSWORD = '9d67e8aeba261a'
-# EMAIL_PORT = '2525'
-
-
+# Email Details
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'cmpn2025@gmail.com'    #reciver email address
+EMAIL_HOST_USER = 'jigishamanohar18@gmail.com'    #reciever email address
 EMAIL_USE_TLS =True
-EMAIL_USE_SSL = False
-EMAIL_HOST_PASSWORD = 'ztvqijmkymjbadup'  # yykxpdsgcwljbdvv not email address original password but the one we created in google
-# EMAIL_HOST_USER = config('codewhiz69@gmail.com')
-# EMAIL_HOST_PASSWORD = config('rushi@123')
+EMAIL_USE_SSL = False  
+EMAIL_HOST_PASSWORD = 'enter your 16-letter long password(follow the given YT video link)' #not email address original password but the one we created in google
+
+# To set the email host password follow the given youtube video link - https://youtu.be/iGPPhzhXBFg?si=_3KIHCSAcJyE8X5L
+
+# Super User
+# username - admin
+# password - admin
